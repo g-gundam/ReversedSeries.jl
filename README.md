@@ -18,3 +18,35 @@ makes it a lot easier to write code to analyze the markets.  With index
 0 being NOW across all the series, it's very easy to get oriented in time.
 
 > When writing code to analyze the markets in Julia, I wanted that same convenience.
+
+## Types
+
+### Reversed
+
+The `Reversed` type lets you wrap anything arraylike in a struct that
+can be indexed in reverse.
+
+```julia-repl
+julia> a = [1, 2, 3]
+julia> r = Reversed(a)
+julia> r[1]
+3
+julia> r[3]
+1
+julia> a[end] == r[1]
+true
+```
+
+### ReversedFrame
+
+The `ReversedFrame` type takes a DataFrame and wraps each of its series in `Reversed`
+and makes them indexable by symbol.
+
+```julia-repl
+julia> rf = ReversedFrame(btcusd) # btcusd is a DataFrame
+julia> rf[:ts][1] # the most recent timestamp
+julia> rf[:ts][2] # the timestamp before that
+julia> rf[:c][1] # the close at 1 corresponds with the timestamp at 1
+julia> rf[:o][1] == btcusd.o[end]
+true
+```
