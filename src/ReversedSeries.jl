@@ -99,14 +99,26 @@ function crossed_down_now(a, b; i::Int=1)
 end
 
 """$(TYPEDSIGNATURES)
+
+Did series a become greater than series b at index i.
 """
 function crossed_up(a, b; i::Int=1)
+    vals = ismissing.([a[i], b[i], a[i+1], b[i+1]])
+    if any(in(vals), 1)
+        return false
+    end
     return a[i] > b[i] && a[i+1] <= b[i+1]
 end
 
 """$(TYPEDSIGNATURES)
+
+Did series a become less than series b at index i.
 """
 function crossed_down(a, b; i::Int=1)
+    vals = ismissing.([a[i], b[i], a[i+1], b[i+1]])
+    if any(in(vals), 1)
+        return false
+    end
     return a[i] < b[i] && a[i+1] >= b[i+1]
 end
 
