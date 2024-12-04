@@ -73,14 +73,27 @@ struct ReversedFrame{df<:DataFrame}
     end
 end
 
+"""$(TYPEDSIGNATURES)
+
+Return a reversed view of a DataFrame column via key.
+"""
+function Base.getproperty(rf::ReversedFrame, k::Symbol)
+    if k == :df
+        getfield(rf, k)
+    elseif k == :s
+        getfield(rf, k)
+    else
+        rf.s[k]
+    end
+end
+
 function Base.show(io::IO, ::MIME"text/plain", rf::ReversedFrame)
-    println("Reversed:")
     print(reverse(rf.df))
 end
 
 """$(TYPEDSIGNATURES)
 
-Return a reversed view of a DataFrame column.
+Return a reversed view of a DataFrame column via indexing.
 """
 Base.getindex(rf::ReversedFrame, k::Symbol) = rf.s[k]
 
