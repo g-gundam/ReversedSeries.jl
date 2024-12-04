@@ -87,14 +87,26 @@ Base.getindex(rf::ReversedFrame, k::Symbol) = rf.s[k]
 ## cross
 
 """$(TYPEDSIGNATURES)
+
+Is series `a` currently greater than series `b`?
 """
 function crossed_up_now(a, b; i::Int=1)
+    vals = ismissing.([a[i], b[i]])
+    if any(in(vals), 1)
+        return false
+    end
     return a[i] > b[i]
 end
 
 """$(TYPEDSIGNATURES)
+
+Is series `a` currently less than series `b`?
 """
 function crossed_down_now(a, b; i::Int=1)
+    vals = ismissing.([a[i], b[i]])
+    if any(in(vals), 1)
+        return false
+    end
     return a[i] < b[i]
 end
 
