@@ -60,8 +60,8 @@ true
 
 """
 struct ReversedFrame{df<:DataFrame}
-    df::DataFrame
-    s::Dict
+    __df::DataFrame
+    __s::Dict
 
     function ReversedFrame(df::DataFrame)
         s = Dict{Symbol,Any}()
@@ -78,12 +78,12 @@ end
 Return a reversed view of a DataFrame column via key.
 """
 function Base.getproperty(rf::ReversedFrame, k::Symbol)
-    if k == :df
+    if k == :__df
         getfield(rf, k)
-    elseif k == :s
+    elseif k == :__s
         getfield(rf, k)
     else
-        rf.s[k]
+        rf.__s[k]
     end
 end
 
@@ -91,10 +91,10 @@ end
 
 Return a reversed view of a DataFrame column via indexing.
 """
-Base.getindex(rf::ReversedFrame, k::Symbol) = rf.s[k]
+Base.getindex(rf::ReversedFrame, k::Symbol) = rf.__s[k]
 
 function Base.show(io::IO, ::MIME"text/plain", rf::ReversedFrame)
-    print(reverse(rf.df))
+    print(reverse(rf.__df))
 end
 
 ## The following are analysis functions that work on reversed series

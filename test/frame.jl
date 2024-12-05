@@ -13,7 +13,7 @@ using Test
         v=[0.0, 0.0, 0.0, 0.0, 0.0]
     )
     rf = ReversedFrame(df)
-    @test df == rf.df
+    @test df == rf.__df
     @test df.ts[1] == rf.ts[5]
     @test df.o[5] == rf.o[1]
 end
