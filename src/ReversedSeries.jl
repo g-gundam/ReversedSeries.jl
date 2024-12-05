@@ -47,10 +47,10 @@ This presents a reversed view of an entire DataFrame.
 
 ```julia-repl
 julia> rf = ReversedFrame(btcusd) # btcusd is a DataFrame
-julia> rf[:ts][1] # the most recent timestamp
-julia> rf[:ts][2] # the timestamp before that
-julia> rf[:c][1] # the close at 1 corresponds with the timestamp at 1
-julia> rf[:o][1] == btcusd.o[end]
+julia> rf.ts[1] # the most recent timestamp
+julia> rf.ts[2] # the timestamp before that
+julia> rf.c[1]  # the close at 1 corresponds with the timestamp at 1
+julia> rf.o[1] == btcusd.o[end]
 true
 ```
 
@@ -87,15 +87,17 @@ function Base.getproperty(rf::ReversedFrame, k::Symbol)
     end
 end
 
-function Base.show(io::IO, ::MIME"text/plain", rf::ReversedFrame)
-    print(reverse(rf.df))
-end
-
 """$(TYPEDSIGNATURES)
 
 Return a reversed view of a DataFrame column via indexing.
 """
 Base.getindex(rf::ReversedFrame, k::Symbol) = rf.s[k]
+
+function Base.show(io::IO, ::MIME"text/plain", rf::ReversedFrame)
+    print(reverse(rf.df))
+end
+
+## The following are analysis functions that work on reversed series
 
 ## cross
 
