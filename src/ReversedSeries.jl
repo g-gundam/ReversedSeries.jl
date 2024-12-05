@@ -76,6 +76,18 @@ end
 """$(TYPEDSIGNATURES)
 
 Return a reversed view of a DataFrame column via key.
+
+# Example
+
+```julia-repl
+julia> rf = ReversedFrame(DataFrame(o=[1,2,3]))
+julia> rf.o
+Reversed{Vector{Int64}}([1, 2, 3])
+
+julia> rf.o[1]
+3
+
+```
 """
 function Base.getproperty(rf::ReversedFrame, k::Symbol)
     if k == :__df
@@ -90,6 +102,17 @@ end
 """$(TYPEDSIGNATURES)
 
 Return a reversed view of a DataFrame column via indexing.
+
+# Example
+
+```julia-repl
+julia> rf = ReversedFrame(DataFrame(o=[1,2,3]))
+julia> rf[:o]
+Reversed{Vector{Int64}}([1, 2, 3])
+
+julia> rf[:o][1]
+3
+
 """
 Base.getindex(rf::ReversedFrame, k::Symbol) = rf.__s[k]
 
