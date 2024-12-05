@@ -44,9 +44,9 @@ and makes them indexable by symbol.
 
 ```julia-repl
 julia> rf = ReversedFrame(btcusd) # btcusd is a DataFrame
-julia> rf[:ts][1] # the most recent timestamp
-julia> rf[:ts][2] # the timestamp before that
-julia> rf[:c][1] # the close at 1 corresponds with the timestamp at 1
-julia> rf[:o][1] == btcusd.o[end]
+julia> rf.ts[1] # the most recent timestamp
+julia> rf.ts[2] # the timestamp before that
+julia> rf.c[1]  # the close at 1 corresponds with the timestamp at 1
+julia> rf.o[1] == btcusd.o[end]
 true
 ```
