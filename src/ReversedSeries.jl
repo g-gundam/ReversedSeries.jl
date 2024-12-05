@@ -159,15 +159,15 @@ end
 function regular_bullish()
 end
 
-"""$(TYPEDSIGNATURES)
-"""
-function hidden_bullish()
-end
+# """$(TYPEDSIGNATURES)
+# """
+# function hidden_bullish()
+# end
 
-"""$(TYPEDSIGNATURES)
-"""
-function hidden_bearish()
-end
+# """$(TYPEDSIGNATURES)
+# """
+# function hidden_bearish()
+# end
 
 ## sr
 
@@ -184,7 +184,7 @@ export crossed_down
 
 export regular_bearish
 export regular_bullish
-export hidden_bullish
-export hidden_bearish
+# export hidden_bullish
+# export hidden_bearish
 
 end
