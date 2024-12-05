@@ -112,7 +112,7 @@ Reversed{Vector{Int64}}([1, 2, 3])
 
 julia> rf[:o][1]
 3
-
+```
 """
 Base.getindex(rf::ReversedFrame, k::Symbol) = rf.__s[k]
 
