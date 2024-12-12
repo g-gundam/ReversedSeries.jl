@@ -9,7 +9,7 @@ Provide a read-only view of a series indexed in reverse
 
 ## Why?
 
-PineScript is the language used by TradingView that allows users of
+[PineScript](https://www.pinecoders.com/) is the language used by TradingView that allows users of
 their platform to implement their own indicators and trading
 strategies.  In this langauge, all series are indexed such that index
 0 represents the current moment in time, and time goes backwards as
