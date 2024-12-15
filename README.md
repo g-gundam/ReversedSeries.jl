@@ -19,6 +19,9 @@ makes it a lot easier to write code to analyze the markets.  With index
 
 > When writing code to analyze the markets in Julia, I wanted that same convenience.
 
+In Julia, the index would be 1 instead of 0, but close enough.  Also, if any
+PineScript needs to be ported to Julia, this makes the translation a little easier.
+
 ## Types
 
 ### Reversed
