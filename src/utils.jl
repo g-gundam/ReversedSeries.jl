@@ -19,3 +19,30 @@ function high_enough_fn(threshold::AbstractFloat; high=:h, upper=:bb_upper, lowe
         return percent_b_high + threshold >= 100.0
     end
 end
+
+
+"""$(TYPEDSIGNATURES)
+
+Return a vector of vector of indices of consecutive candles that satisfy the given function.
+"""
+function find_clusters(rf::ReversedFrame, max::Integer, fn::Function)
+    result = []
+    clusters = []
+    for i in 1:length(rf.c)
+        if fn(rf, i)
+            push!(cluster, i)
+        else
+            if length(cluster) > 0
+                push!(result, cluster)
+                cluster = []
+                if length(result) == max
+                    return result
+                end
+            end
+        end
+    end
+    if length(cluster) > 0
+        push!(result, cluster)
+    end
+    return result
+end
