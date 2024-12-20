@@ -5,6 +5,8 @@ using DataFrames
 using Chain
 using DataStructures
 
+include("utils.jl")
+
 ## structs
 
 # This presents a reversed view of anything array-like.
