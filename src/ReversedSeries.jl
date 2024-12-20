@@ -5,8 +5,6 @@ using DataFrames
 using Chain
 using DataStructures
 
-include("utils.jl")
-
 ## structs
 
 # This presents a reversed view of anything array-like.
@@ -123,6 +121,8 @@ Base.getindex(rf::ReversedFrame, k::Symbol) = rf.__s[k]
 function Base.show(io::IO, ::MIME"text/plain", rf::ReversedFrame)
     print(reverse(rf.__df))
 end
+
+include("utils.jl")
 
 ## The following are analysis functions that work on reversed series
 
