@@ -38,6 +38,8 @@ Base.getindex(a::Reversed, i::Int) = a.A[end-i+1]
 
 Base.length(a::Reversed) = length(a.A)
 
+Base.lastindex(a::Reversed) = length(a)
+
 # This presents a reversed view an entire DataFrame.
 """
 $(TYPEDEF)
