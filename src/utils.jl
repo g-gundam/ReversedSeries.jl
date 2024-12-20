@@ -27,7 +27,7 @@ Return a vector of vector of indices of consecutive candles that satisfy the giv
 """
 function find_clusters(rf::ReversedFrame, max::Integer, fn::Function)
     result = []
-    clusters = []
+    cluster = []
     for i in 1:length(rf.c)
         if fn(rf, i)
             push!(cluster, i)
