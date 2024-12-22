@@ -25,10 +25,10 @@ end
 
 Return a vector of vector of indices of consecutive candles that satisfy the given function.
 """
-function find_clusters(rf::ReversedFrame, max::Integer, fn::Function)
+function find_clusters(rf::ReversedFrame, max::Integer, fn::Function; close=:c)
     result = []
     cluster = []
-    for i in 1:length(rf.c)
+    for i in 1:length(rf[close])
         if fn(rf, i)
             push!(cluster, i)
         else
