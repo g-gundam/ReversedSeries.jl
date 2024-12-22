@@ -46,3 +46,30 @@ function find_clusters(rf::ReversedFrame, max::Integer, fn::Function; close=:c)
     end
     return result
 end
+
+"""$(TYPEDSIGNATURES)
+
+Given a collection and a test function, return the index of the
+first item that returns true for `testfn(collection[i])`.
+If nothing is found, return `missing`.
+This is a port of JavaScript's Array.prototype.findIndex.
+"""
+function find_index(collection::AbstractArray, testfn::Function)
+    for i in eachindex(collection)
+        if testfn(collection[i])
+            return i
+        end
+    end
+    return missing
+end
+
+"""$(TYPEDSIGNATURES)
+
+Out of the cluster, which index had the highest close?
+"""
+function find_local_high(rf, cluster; close=:c)
+    closes = map(i -> rf[close][i], cluster)
+    highest = maximum(closes)
+    highest_index = find_index(closes, c -> c == highest)
+    return cluster[highest_index]
+end
