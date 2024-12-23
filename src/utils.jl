@@ -1,6 +1,6 @@
 """$(TYPEDSIGNATURES)
 
-Return a function that tries to find lows by their proximity the BB lower bands
+Return a function that tries to find lows by their proximity to the BB lower bands
 """
 function low_enough_fn(threshold::AbstractFloat; low=:l, upper=:bb_upper, lower=:bb_lower)
     return function(rf::ReversedFrame, i::Integer)
@@ -11,7 +11,7 @@ end
 
 """$(TYPEDSIGNATURES)
 
-Return a function that tries to find highs by their proximity the BB upper bands
+Return a function that tries to find highs by their proximity to the BB upper bands
 """
 function high_enough_fn(threshold::AbstractFloat; high=:h, upper=:bb_upper, lower=:bb_lower)
     return function(rf::ReversedFrame, i::Integer)
