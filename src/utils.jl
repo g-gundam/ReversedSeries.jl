@@ -73,3 +73,14 @@ function find_local_high(rf, cluster; close=:c)
     highest_index = find_index(closes, c -> c == highest)
     return cluster[highest_index]
 end
+
+"""$(TYPEDSIGNATURES)
+
+Out of the cluster, which index had the lowest close?
+"""
+function find_local_low(rf, cluster; close=:c)
+    closes = map(i -> rf[close][i], cluster)
+    lowest = minimum(closes)
+    lowest_index = find_index(closes, c -> c == lowest)
+    return cluster[lowest_index]
+end
