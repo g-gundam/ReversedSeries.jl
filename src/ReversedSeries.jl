@@ -255,8 +255,70 @@ function regular_bearish_divergence(rf::ReversedFrame;
 end
 
 """$(TYPEDSIGNATURES)
+
+Return true if regular bullish divergence on the given indicator was detected near index 1.
+Note that Bollinger Bands are used to help detect divergence, so their presence is required
+in the `rf` in addition to the indicator that's being tested for divergence.
+
+# Keyword Arguments
+
+| argument       | default     | description                                 |
+|----------------|-------------|---------------------------------------------|
+| indicator      | `:rsi14`    | Name in `rf` for the indicator being tested |
+| low            | `:l`        | Name in `rf` for he OHLCV high value        |
+| upper          | `:bb_upper` | Name in `rf` for the upper band of the BBs  |
+| lower          | `:bb_lower` | Name in `rf` for the lower band of the BBs  |
+| age_threshold  | `1`         | ?                                           |
+| gap_threshold  | `(7,30)`    | ?                                           |
+| peak_threshold | `9.0`       | ?                                           |
+
+# Example
+```julia-repl
+julia> regular_bearish_divergence(rf)
+```
 """
-function regular_bullish_divergence()
+function regular_bullish_divergence(rf::ReversedFrame;
+                                    indicator::Symbol=:rsi14,
+                                    low::Symbol=:l,
+                                    upper::Symbol=:bb_upper,
+                                    lower::Symbol=:bb_lower,
+                                    age_threshold::Integer=1,
+                                    gap_threshold::Tuple=(7, 30),
+                                    peak_threshold::AbstractFloat=9.0)
+    osc = indicator
+    field_set = rf.__df |> names .|> Symbol |> Set
+    need = Set([osc, low, lower])
+    if intersect(need, field_set) != need
+        @error "Missing Fields" message="The given rf is missing some required columns." need field_set
+        false
+    end
+    (min_gap, max_gap) = gap_threshold
+    clusters = find_clusters(rf, 3, low_enough_fn(peak_threshold; low, upper, lower))
+    if length(clusters) < 2
+        return false
+    end
+    if (clusters[1][1] > age_threshold)
+        return false
+    end
+    low0 = find_local_low(rf, clusters[1])
+    low1 = find_local_low(rf, clusters[2])
+    osc0 = rf[osc][low0]
+    osc1 = rf[osc][low1]
+    if low1 - low0 < min_gap
+        if length(clusters) > 2
+            low1 = find_local_low(rf, clusters[3])
+            if low1 - low0 < min_gap
+                return false
+            end
+            osc1 = rf[osc][low1]
+        else
+            return false
+        end
+    end
+    if low1 - low0 > max_gap
+        return false
+    end
+    return osc0 > osc1
 end
 
 # """$(TYPEDSIGNATURES)
