@@ -331,8 +331,18 @@ end
 # function hidden_bearish()
 # end
 
-## sr
+## percents
 
+"""$(TYPEDSIGNATURES)
+
+Return the percent change of series `a` the previous value to the current value.
+If you want to compare the current value to a value further in the past, increase the value of `back`.
+"""
+function percent_change(a; i=1, back=1)
+    newer = a[i]
+    older = a[i+back]
+    return ((newer - older) / older) * 100
+end
 
 ## Exports
 
@@ -348,5 +358,7 @@ export regular_bearish_divergence
 export regular_bullish_divergence
 # export hidden_bullish
 # export hidden_bearish
+
+export percent_change
 
 end
