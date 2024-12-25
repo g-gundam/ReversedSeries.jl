@@ -53,3 +53,31 @@ julia> rf.c[1]  # the close at 1 corresponds with the timestamp at 1
 julia> rf.o[1] == btcusd.o[end]
 true
 ```
+
+## Analysis
+
+Having [indicators](https://femtotrader.github.io/OnlineTechnicalIndicators.jl/dev/indicators_support/) is nice,
+but what are you going to do with them?
+
+1. Put them in `Reversed` so that the most recent value is always at index `1`.
+2. Use the analysis functions provided by `ReversedSeries` to make sense of them.
+
+### Crosses
+
+- `crossed_up`
+- `crossed_down`
+- `crossed_up_now` (maybe replace "now" with "currently" to be less confusing)
+- `crossed_down_now`
+- TODO `positive_alignment`
+- TODO `negative_alignment`
+
+### Divergence
+
+- `regular_bearish_divergence`
+- `regular_bullish_divergence`
+
+### Miscellaneous
+
+- `percent_change`
+- TODO `negative_slope`
+- TODO `positive_slope`
