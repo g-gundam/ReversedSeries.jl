@@ -134,25 +134,28 @@ include("utils.jl")
 
 Is series `a` currently greater than series `b`?
 """
-function crossed_up_now(a, b; i::Int=1)
+function crossed_up_currently(a, b; i::Int=1)
     vals = ismissing.([a[i], b[i]])
     if any(in(vals), 1)
         return false
     end
+    # @info :up a[i] b[i] gt=(a[i] > b[i])
     return a[i] > b[i]
 end
+Base.@deprecate crossed_up_now(a, b; i=1) crossed_up_currently(a, b; i=1)
 
 """$(TYPEDSIGNATURES)
 
 Is series `a` currently less than series `b`?
 """
-function crossed_down_now(a, b; i::Int=1)
+function crossed_down_currently(a, b; i::Int=1)
     vals = ismissing.([a[i], b[i]])
     if any(in(vals), 1)
         return false
     end
     return a[i] < b[i]
 end
+Base.@deprecate crossed_down_now(a, b; i=1) crossed_down_currently(a, b; i=1)
 
 """$(TYPEDSIGNATURES)
 
@@ -349,8 +352,10 @@ end
 export Reversed
 export ReversedFrame
 
-export crossed_up_now
-export crossed_down_now
+export crossed_up_now         # DEPRECATED
+export crossed_up_currently
+export crossed_down_now       # DEPRECATED
+export crossed_down_currently
 export crossed_up
 export crossed_down
 
