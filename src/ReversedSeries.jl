@@ -156,6 +156,37 @@ function crossed_down_currently(a, b; i::Int=1)
 end
 Base.@deprecate crossed_down_now(a, b; i=1) crossed_down_currently(a, b; i=1)
 
+
+"""$(TYPEDSIGNATURES)
+
+Return true if a is currently sloping up.  In other words, `a[i] > a[i+back]`.
+"""
+function positive_slope_currently(a; i=1, back=1)
+    if length(a) < i+back
+        return false
+    end
+    vals = ismissing.([a[1], a[i]])
+    if any(in(vals), 1)
+        return false
+    end
+    return a[i] > a[i+back]
+end
+
+"""$(TYPEDSIGNATURES)
+
+Return true if a is currently sloping down.  In other words, `a[i] < a[i+back]`.
+"""
+function negative_slope_currently(a; i=1, back=1)
+    if length(a) < i+back
+        return false
+    end
+    vals = ismissing.([a[1], a[i]])
+    if any(in(vals), 1)
+        return false
+    end
+    return a[i] < a[i+back]
+end
+
 """$(TYPEDSIGNATURES)
 
 Did series a become greater than series b at index i.
@@ -351,12 +382,13 @@ end
 export Reversed
 export ReversedFrame
 
-export crossed_up_now         # DEPRECATED
 export crossed_up_currently
-export crossed_down_now       # DEPRECATED
 export crossed_down_currently
 export crossed_up
 export crossed_down
+
+export positive_slope_currently
+export negative_slope_currently
 
 export regular_bearish_divergence
 export regular_bullish_divergence
