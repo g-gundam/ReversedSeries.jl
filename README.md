@@ -66,8 +66,8 @@ but what are you going to do with them?
 
 - `crossed_up`
 - `crossed_down`
-- `crossed_up_now` (maybe replace "now" with "currently" to be less confusing)
-- `crossed_down_now`
+- `crossed_up_currently`
+- `crossed_down_currently`
 - TODO `positive_alignment`
 - TODO `negative_alignment`
 
@@ -79,5 +79,5 @@ but what are you going to do with them?
 ### Miscellaneous
 
 - `percent_change`
-- TODO `negative_slope`
-- TODO `positive_slope`
+- `negative_slope_currently`
+- `positive_slope_currently`
