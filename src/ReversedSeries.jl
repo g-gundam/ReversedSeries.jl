@@ -139,7 +139,6 @@ function crossed_up_currently(a, b; i::Int=1)
     if any(in(vals), 1)
         return false
     end
-    # @info :up a[i] b[i] gt=(a[i] > b[i])
     return a[i] > b[i]
 end
 Base.@deprecate crossed_up_now(a, b; i=1) crossed_up_currently(a, b; i=1)
