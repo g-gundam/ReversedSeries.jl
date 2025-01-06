@@ -79,5 +79,6 @@ but what are you going to do with them?
 ### Miscellaneous
 
 - `percent_change`
+- `percent_difference`
 - `negative_slope_currently`
 - `positive_slope_currently`
