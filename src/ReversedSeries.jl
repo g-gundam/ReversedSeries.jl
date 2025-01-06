@@ -380,6 +380,18 @@ function percent_change(a; i=1, back=1)
     return ((newer - older) / older) * 100
 end
 
+"""$(TYPEDSIGNATURES)
+
+Return the percent difference between `a[i]` and `b[i]`.  If either value is missing, return `missing`.
+"""
+function percent_difference(a, b; i=1)
+    vals = ismissing.([a[i], b[i]])
+    if any(in(vals), 1)
+        return missing
+    end
+    ((b[i] - a[i]) / a[i]) * 100
+end
+
 ## Exports
 
 export Reversed
@@ -399,5 +411,6 @@ export regular_bullish_divergence
 # export hidden_bearish
 
 export percent_change
+export percent_difference
 
 end
