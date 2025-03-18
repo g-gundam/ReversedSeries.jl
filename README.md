@@ -68,8 +68,6 @@ but what are you going to do with them?
 - `crossed_down`
 - `crossed_up_currently`
 - `crossed_down_currently`
-- TODO `positive_alignment`
-- TODO `negative_alignment`
 
 ### Divergence
 
