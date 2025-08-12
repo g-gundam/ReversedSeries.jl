@@ -223,10 +223,10 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 
 | argument       | default     | description                                 |
 |----------------|-------------|:--------------------------------------------|
-| indicator      | `:rsi14`    | Name in `rf` for the indicator being tested |
-| high           | `:h`        | Name in `rf` for he OHLCV high value        |
-| upper          | `:bb_upper` | Name in `rf` for the upper band of the BBs  |
-| lower          | `:bb_lower` | Name in `rf` for the lower band of the BBs  |
+| indicator      | `:rsi14`    | Name in `rf` of the indicator being tested  |
+| high           | `:h`        | Name in `rf` of the OHLCV high value        |
+| upper          | `:bb_upper` | Name in `rf` of the upper band of the BBs   |
+| lower          | `:bb_lower` | Name in `rf` of the lower band of the BBs   |
 | age_threshold  | `1`         | ?                                           |
 | gap_threshold  | `(7,30)`    | ?                                           |
 | peak_threshold | `9.0`       | ?                                           |
@@ -297,10 +297,10 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 
 | argument       | default     | description                                 |
 |----------------|-------------|:--------------------------------------------|
-| indicator      | `:rsi14`    | Name in `rf` for the indicator being tested |
-| low            | `:l`        | Name in `rf` for he OHLCV high value        |
-| upper          | `:bb_upper` | Name in `rf` for the upper band of the BBs  |
-| lower          | `:bb_lower` | Name in `rf` for the lower band of the BBs  |
+| indicator      | `:rsi14`    | Name in `rf` of the indicator being tested  |
+| low            | `:l`        | Name in `rf` of the OHLCV high value        |
+| upper          | `:bb_upper` | Name in `rf` of the upper band of the BBs   |
+| lower          | `:bb_lower` | Name in `rf` of the lower band of the BBs   |
 | age_threshold  | `1`         | ?                                           |
 | gap_threshold  | `(7,30)`    | ?                                           |
 | peak_threshold | `9.0`       | ?                                           |
