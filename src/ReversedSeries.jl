@@ -222,7 +222,7 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 # Keyword Arguments
 
 | argument       | default     | description                                 |
-|----------------|-------------|---------------------------------------------|
+|----------------|-------------|:--------------------------------------------|
 | indicator      | `:rsi14`    | Name in `rf` for the indicator being tested |
 | high           | `:h`        | Name in `rf` for he OHLCV high value        |
 | upper          | `:bb_upper` | Name in `rf` for the upper band of the BBs  |
@@ -296,7 +296,7 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 # Keyword Arguments
 
 | argument       | default     | description                                 |
-|----------------|-------------|---------------------------------------------|
+|----------------|-------------|:--------------------------------------------|
 | indicator      | `:rsi14`    | Name in `rf` for the indicator being tested |
 | low            | `:l`        | Name in `rf` for he OHLCV high value        |
 | upper          | `:bb_upper` | Name in `rf` for the upper band of the BBs  |
