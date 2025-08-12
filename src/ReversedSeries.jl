@@ -307,7 +307,7 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 
 # Example
 ```julia-repl
-julia> regular_bearish_divergence(rf)
+julia> regular_bullish_divergence(rf)
 ```
 """
 function regular_bullish_divergence(rf::ReversedFrame;
