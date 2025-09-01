@@ -322,13 +322,11 @@ function regular_bullish_divergence(rf::ReversedFrame;
     field_set = rf.__df |> names .|> Symbol |> Set
     need = Set([osc, low, lower])
     if intersect(need, field_set) != need
-        @error "Missing Fields" message="The given rf is missing some required columns." need field_set
         return false
     end
     # Also make sure needed fields have non-missing values.
     for n in need
         if ismissing(rf[n][1])
-            @info "missing" rf.ts[1] n
             return false
         end
     end
