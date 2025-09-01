@@ -249,11 +249,10 @@ function regular_bearish_divergence(rf::ReversedFrame;
     need = Set([osc, high, upper])
     if intersect(need, field_set) != need
         @error "Missing Fields" message="The given rf is missing some required columns." need field_set
-        false
+        return false
     end
     (min_gap, max_gap) = gap_threshold
     clusters = find_clusters(rf, 3, high_enough_fn(peak_threshold; high, upper, lower))
-    @info clusters
 
     # not enough local highs detected
     if length(clusters) < 2
@@ -322,6 +321,7 @@ function regular_bullish_divergence(rf::ReversedFrame;
     field_set = rf.__df |> names .|> Symbol |> Set
     need = Set([osc, low, lower])
     if intersect(need, field_set) != need
+        @error "Missing Fields" message="The given rf is missing some required columns." need field_set
         return false
     end
     # Also make sure needed fields have non-missing values.
