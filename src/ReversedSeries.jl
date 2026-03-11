@@ -359,15 +359,15 @@ function regular_bullish_divergence(rf::ReversedFrame;
     return osc0 > osc1
 end
 
-# """$(TYPEDSIGNATURES)
-# """
-# function hidden_bullish()
-# end
+"""$(TYPEDSIGNATURES)
+"""
+function hidden_bullish()
+end
 
-# """$(TYPEDSIGNATURES)
-# """
-# function hidden_bearish()
-# end
+"""$(TYPEDSIGNATURES)
+"""
+function hidden_bearish()
+end
 
 ## percents
 
@@ -412,8 +412,8 @@ export negative_slope_currently
 
 export regular_bearish_divergence
 export regular_bullish_divergence
-# export hidden_bullish
-# export hidden_bearish
+export hidden_bullish
+export hidden_bearish
 
 export percent_change
 export percent_difference
