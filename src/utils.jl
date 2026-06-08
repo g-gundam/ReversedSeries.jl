@@ -1,6 +1,18 @@
 """$(TYPEDSIGNATURES)
 
 Return a function that tries to find lows by their proximity to the BB lower bands
+
+# Arguments
+
+- `threshold::AbstractFloat`: % distance of low from lower band
+
+# Keyword Arguments
+
+| argument | default     | description                          |
+|----------|-------------|:-------------------------------------|
+| low      | `:l`        | Name in `rf` of OHLCV low value      |
+| upper    | `:bb_upper` | Name in `rf` of upper Bollinger Band |
+| lower    | `:bb_lower` | Name in `rf` of lower Bollinger Band |
 """
 function low_enough_fn(threshold::AbstractFloat; low=:l, upper=:bb_upper, lower=:bb_lower)
     return function(rf::ReversedFrame, i::Integer)
@@ -15,6 +27,18 @@ end
 """$(TYPEDSIGNATURES)
 
 Return a function that tries to find highs by their proximity to the BB upper bands
+
+# Arguments
+
+- `threshold::AbstractFloat`: % distance of high from upper band
+
+# Keyword Arguments
+
+| argument | default     | description                          |
+|----------|-------------|:-------------------------------------|
+| high     | `:h`        | Name in `rf` of OHLCV high value     |
+| upper    | `:bb_upper` | Name in `rf` of upper Bollinger Band |
+| lower    | `:bb_lower` | Name in `rf` of lower Bollinger Band |
 """
 function high_enough_fn(threshold::AbstractFloat; high=:h, upper=:bb_upper, lower=:bb_lower)
     return function(rf::ReversedFrame, i::Integer)
