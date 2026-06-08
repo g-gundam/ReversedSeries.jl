@@ -221,15 +221,15 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 
 # Keyword Arguments
 
-| argument       | default     | description                                 |
-|----------------|-------------|:--------------------------------------------|
-| indicator      | `:rsi14`    | Name in `rf` of the indicator being tested  |
-| high           | `:h`        | Name in `rf` of the OHLCV high value        |
-| upper          | `:bb_upper` | Name in `rf` of the upper band of the BBs   |
-| lower          | `:bb_lower` | Name in `rf` of the lower band of the BBs   |
-| age_threshold  | `1`         | ?                                           |
-| gap_threshold  | `(7,30)`    | ?                                           |
-| peak_threshold | `9.0`       | ?                                           |
+| argument       | default     | description                                                     |
+|----------------|-------------|:----------------------------------------------------------------|
+| indicator      | `:rsi14`    | Name in `rf` of the indicator being tested                      |
+| high           | `:h`        | Name in `rf` of the OHLCV high value                            |
+| upper          | `:bb_upper` | Name in `rf` of the upper band of the BBs                       |
+| lower          | `:bb_lower` | Name in `rf` of the lower band of the BBs                       |
+| age_threshold  | `1`         | Number of candles that may elapse after initial detection       |
+| gap_threshold  | `(7,30)`    | Integers representing the min and max gap between local highs   |
+| peak_threshold | `9.0`       | Distance allowed from the upper bband expressed as a percentage |
 
 # Example
 ```julia-repl
@@ -294,15 +294,15 @@ in the `rf` in addition to the indicator that's being tested for divergence.
 
 # Keyword Arguments
 
-| argument       | default     | description                                 |
-|----------------|-------------|:--------------------------------------------|
-| indicator      | `:rsi14`    | Name in `rf` of the indicator being tested  |
-| low            | `:l`        | Name in `rf` of the OHLCV high value        |
-| upper          | `:bb_upper` | Name in `rf` of the upper band of the BBs   |
-| lower          | `:bb_lower` | Name in `rf` of the lower band of the BBs   |
-| age_threshold  | `1`         | ?                                           |
-| gap_threshold  | `(7,30)`    | ?                                           |
-| peak_threshold | `9.0`       | ?                                           |
+| argument       | default     | description                                                     |
+|----------------|-------------|:----------------------------------------------------------------|
+| indicator      | `:rsi14`    | Name in `rf` of the indicator being tested                      |
+| low            | `:h`        | Name in `rf` of the OHLCV low value                             |
+| upper          | `:bb_upper` | Name in `rf` of the upper band of the BBs                       |
+| lower          | `:bb_lower` | Name in `rf` of the lower band of the BBs                       |
+| age_threshold  | `1`         | Number of candles that may elapse after initial detection       |
+| gap_threshold  | `(7,30)`    | Integers representing the min and max gap between local highs   |
+| peak_threshold | `9.0`       | Distance allowed from the lower bband expressed as a percentage |
 
 # Example
 ```julia-repl
