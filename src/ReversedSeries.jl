@@ -373,8 +373,9 @@ end
 
 """$(TYPEDSIGNATURES)
 
-Return the percent change of series `a` the previous value to the current value.
+Return the percent change in series `a` of the current value relative to the previous value.
 If you want to compare the current value to a value further in the past, increase the value of `back`.
+By default, it goes one candle back.
 """
 function percent_change(a; i=1, back=1)
     if ismissing(a[i])
