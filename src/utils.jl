@@ -114,3 +114,11 @@ function find_local_low(rf, cluster; close=:c)
     lowest_index = find_index(closes, c -> c == lowest)
     return cluster[lowest_index]
 end
+
+"""$(TYPEDSIGNATURES)
+
+Return what percent of `a` is `b`?
+"""
+function percent_of(a::Union{Real, Missing}, b::Union{Real, Missing})
+    (b / a) * 100.0
+end
