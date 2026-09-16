@@ -26,6 +26,34 @@ end
 
 """$(TYPEDSIGNATURES)
 
+Return a function that tries to find lows by their proximity to the BB lower bands,
+taking into consideration the width of the bollinger bands.
+
+# Arguments
+
+- `threshold::AbstractFloat`: % distance of low from lower band relative to bband width
+
+# Keyword Arguments
+
+| argument | default     | description                          |
+|----------|-------------|:-------------------------------------|
+| low      | `:l`        | Name in `rf` of OHLCV low value      |
+| upper    | `:bb_upper` | Name in `rf` of upper Bollinger Band |
+| lower    | `:bb_lower` | Name in `rf` of lower Bollinger Band |
+"""
+function low_enough_proportional_fn(threshold::AbstractFloat; low=:l, upper=:bb_upper, lower=:bb_lower)
+    return function(rf::ReversedFrame, i::Integer)
+        band_width = rf[upper][i] - rf[lower][i]
+        percent_b_low = (rf[low][i] - rf[lower][i]) / (rf[upper][i] - rf[lower][i]) * 100
+        if ismissing(percent_b_low)
+            return false
+        end
+        return percent_b_low - threshold <= 0.0
+    end
+end
+
+"""$(TYPEDSIGNATURES)
+
 Return a function that tries to find highs by their proximity to the BB upper bands
 
 # Arguments
